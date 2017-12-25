@@ -1,0 +1,11 @@
+{
+  "name": "webchatapp",
+  "version": "1.0.0",
+  "description": "Simple web chat app created using socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Evačić",
+  "license": "ISC"
+}
