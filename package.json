@@ -2,9 +2,9 @@
   "name": "webchatapp",
   "version": "1.0.0",
   "description": "Simple web chat app created using socket.io",
-  "main": "Server/index.js",
+  "main": "Server/server.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
