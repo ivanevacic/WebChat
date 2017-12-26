@@ -11,7 +11,7 @@ class Users {
     //return user that was removed
     var user = this.getUser(id);
     if(user){
-      this.users = this.users.filter(()=> user.id !== id);
+      this.users = this.users.filter((user)=> user.id !== id);
     }
     return user;
   }
@@ -20,7 +20,7 @@ class Users {
   }
   getUserList(room) {
     var users = this.users.filter((user) => user.room === room);  //short syntax for return
-    var namesArray = users.map(()=> user.name);
+    var namesArray = users.map((user)=> user.name);
 
     return namesArray;
 
