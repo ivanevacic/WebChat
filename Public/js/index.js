@@ -1,5 +1,24 @@
 var socket = io();
 
+//scroll to bottom if necessary
+scrollToBottom = () =>{
+  //Selectors
+  var messages = jQuery('#messages');
+  var newMessage = messages.children('li:last-child');  //select last message child
+  //Heights
+  var clientHeight = messages.prop('clientHeight'); //prop(property we wonna fetch)
+  var scrollTop = messages.prop('scrollTop');
+  var scrollHeight = messages.prop('scrollHeight');
+  var newMessageHeight = newMessage.innerHeight();
+  var lastMessageHeight = newMessage.prev().innerHeight();  //moves to previous child
+
+  //calculation
+  if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight){
+    //scroll to top
+    messages.scrollTop(scrollHeight); //moving to the bottom of msg area
+  }
+}
+
 socket.on('connect', () => {
   console.log('Connected to server');
 
@@ -14,7 +33,7 @@ socket.on('newMessage', (message)=> {
   //var li = jQuery('<li></li>');
   //li.text(`${message.from} ${formattedTime} : ${message.text}`);
   //jQuery('#messages').append(li);
-  
+
   //mustache js template
   var formattedTime = moment(message.createdAt).format('h:mm a');
   var template = jQuery('#message-template').html();
@@ -23,8 +42,8 @@ socket.on('newMessage', (message)=> {
     from: message.from,
     createdAt: formattedTime
   });
-
   jQuery('#messages').append(html);
+  scrollToBottom();
 });
 
 socket.on('newLocationMessage', (message)=>{
@@ -42,6 +61,7 @@ socket.on('newLocationMessage', (message)=>{
     createdAt: formattedTime
   });
   jQuery('#messages').append(html);
+  scrollToBottom();
 });
 
 jQuery('#message-form').on('submit', (e)=> {
