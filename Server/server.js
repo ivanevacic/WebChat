@@ -7,7 +7,7 @@ const {generateMessage, generateLocationMessage} = require('./Utils/message');
 const {isRealString} = require('./Utils/validation');
 const {Users} = require('./Utils/users');
 
-const publicPath = path.join(__dirname, '../public');
+const publicPath = path.join(__dirname, '../Public');
 const port = process.env.PORT || 3000;  //config for heroku
 var app = express();
 
